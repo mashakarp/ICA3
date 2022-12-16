@@ -1,0 +1,62 @@
+---
+title: "Week 6 - Computer practical"
+author: "Put ALL names here"
+date: "Computer practical week 6: Thursday Friday (delete day as appropriate)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#Insert your working directory!
+#setwd()
+#Place the data in your working directory!
+pots<-read.csv("potatoes.csv", header=TRUE)
+sleep<-read.csv("sleepdep.csv", header=TRUE)
+```
+
+## Today's practical
+
+- Find a group of 3-5 students to work with. You can also work alone if you'd prefer. **Please ask the lecturer if you'd like help finding a group.**
+- Then move on to the task below. 
+
+## The data
+
+We'll be using both the potato data set and the sleep and food deprivation data. 
+
+## Potato data
+We want to understand how weight of potato is affected by variety, a categorical covariate. There are four varieties in the dataset, abbreviated as bur, ken, nor and rls.
+
+1. Build a linear model for weight using variety as a covariate, and write down the format of the model.
+
+For any normal linear model of the form
+$$Y_i=\beta_0+\beta_1x_{i1}+...+\beta_px_{ip}+\epsilon_i$$
+where $\epsilon_i\sim N(0,\sigma^2)$ are iid, we are essentially making the assumption that 
+$$\{Y_i\vert x_{i1},...,x_{ip}\}\sim N(\beta_0+\beta_1x_{i1}+...+\beta_px_{ip}, \sigma^2 )$$
+
+2. Write down a similar statement about each combination of the covariates you have for your model for potato weights.
+3. For each of these statements, write a sentence to describe what we're assuming about the distribution of weight for each variety of potato. 
+
+When we have a model with one covariate which is categorical, like we have here, the ANOVA is often referred to as a 'one-way ANOVA'. The 'one' refers to the fact that we have just one grouping variable (variety in this case). Notice that the single covariate needs to be categorical, otherwise this is not a 'one-way' ANOVA. The one-way ANOVA is of interest in its own right, which hopefully will be clear once you finish answering the following questions.
+
+4. Write down the null and alternative hypothesis that the ANOVA would be testing in this case, in terms of the regression coefficients.
+5. What is the p-value for the ANOVA for regression (equivalent to a one-way ANOVA)? What do you conclude about the hypothesis you wrote above?
+6. Now write down an equivalent version of the null and alternative hypothesis that the ANOVA would be testing in this case, but this time in terms of the population mean weight of potatoes for the different varieties, $\mu_{bur}, \mu_{ken}, \mu_{nor}, \mu_{rls}$.
+7. Thinking carefully about your answer to question 6, in what way is the one-way ANOVA an extension of the two-sample t-test? 
+8. Compare the assumptions you made to run this test (question 3) with the assumptions of the two-sample t-test.   
+
+## Sleep deprivation data (if time allows)
+
+The sleep deprivation data has information about the score students achieve on a test after varying amounts of sleep and food deprivation. 
+
+9. Build a normal linear model for score, with sleep and food deprivation as two (categorical) covariates.
+10. Comment on the result of the ANOVA (comparing the model to the intercept-only model). What is the p-value? What do you conclude? Does information on sleep and food deprivation collectively contribute to understanding the students' scores? Was running this ANOVA necessary or could you assess the impact of the two covariates just from the output of `lm()` here?
+11. Build a further normal linear model for score, with sleep and food deprivation as two (categorical) covariates which includes the interaction between the two.
+12. Comment on the result of the ANOVA for this updated model (comparing the model to the intercept-only model). What is the p-value? What do you conclude? Was running this ANOVA necessary or could you assess the impact of the two covariates just from the output of `lm()` here? 
+
+Again here, the ANOVA you have looked at has a special name when we have two covariates which are BOTH categorical. This is known as the two-way ANOVA ('two', of course, referring to the fact that there are two categorical covariates). You've seen two flavours here: a two-way ANOVA with and without interaction.
+
+Just to be clear, though some people talk about 'three-way ANOVA' etc, it's just one- and two-way ANOVAs that receive special attention.
+
+\
+\
+
